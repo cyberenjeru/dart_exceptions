@@ -20,10 +20,20 @@ void main() {
   // Fazendo transferência
   try {
     bool result = bankController.makeTransfer(
-        idSender: "Kako22", idReceiver: "Ricarth", amount: 50);
+        idSender: "Kako", idReceiver: "Ricarth", amount: 50);
+
     // Observando resultado
-    print(result);
+    if (result) {
+      print("Transferência realizada.");
+    }
   } on SenderIdInvalidException catch (exception) {
     print("O ID '${exception.idSender}' é inválido, tente novamente.");
+  } on ReceiverIdInvalidException catch (exception) {
+    print("O ID '${exception.idReceiver}' é inválido, tente novamente.");
+  } on SenderNotAuthenticatedException catch (exception) {
+    print("O ID '${exception.idSender}' não está autenticado.");
+  } on SenderBalanceLowerThanAmountException catch (exception) {
+    print(
+        "O saldo do usário ID '${exception.idSender}' não é suficiente para realizaçaõ da transferência.");
   }
 }

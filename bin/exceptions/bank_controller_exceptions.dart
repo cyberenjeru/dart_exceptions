@@ -8,6 +8,19 @@ class ReceiverIdInvalidException implements Exception {
   ReceiverIdInvalidException({required this.idReceiver});
 }
 
-class SenderNotAuthenticatedException implements Exception {}
+class SenderNotAuthenticatedException implements Exception {
+  String idSender;
+  SenderNotAuthenticatedException({required this.idSender});
+}
 
-class SenderBalanceLowerThanAmountException implements Exception {}
+class SenderBalanceLowerThanAmountException implements Exception {
+  String idSender;
+  double SenderBalance;
+  double amount;
+
+  SenderBalanceLowerThanAmountException({
+    required this.idSender,
+    required this.SenderBalance,
+    required this.amount,
+  });
+}
