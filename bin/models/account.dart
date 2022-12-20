@@ -6,7 +6,8 @@ class Account {
   Account(
       {required this.name,
       required this.balance,
-      required this.isAuthenticated});
+      required this.isAuthenticated})
+      : assert(name.isNotEmpty); //O name não pode ser uma string vazia
 
   editBalance({required value}) {
     balance = balance + value;
